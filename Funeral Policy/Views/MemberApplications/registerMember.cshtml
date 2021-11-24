@@ -1,0 +1,144 @@
+﻿@model Funeral_Policy.Models.MemberApplication
+
+@{
+    ViewBag.Title = "registerMember";
+    var message = TempData["AlertMessage"] ?? string.Empty;
+}
+<script>
+                var msg = '@message';
+                if (msg)
+                    alert(msg)
+</script>
+<div class="row">
+    <div class="col-md-4">
+        <h3>Member Registration Details</h3>
+        <table class="table">
+
+            <tr>
+                <th>Title</th>
+                <td>
+                    <div class="input-group">
+                        @Html.DisplayFor(m => m.Tittle, new { @class = "form-control", @placeholder = "Registration Number" })
+                    </div>
+                    @Html.ValidationMessageFor(m => m.Tittle, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+            <tr>
+                <th>@Html.LabelFor(model => model.Name)</th>
+                <td>
+                    <div class="input-group">
+
+                        @Html.DisplayFor(m => m.Name, new { @class = "form-control", @placeholder = "Registration Number" })
+                    </div>
+                    @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+            <tr>
+                <th>@Html.LabelFor(model => model.Surname)</th>
+                <td>
+                    <div class="input-group">
+
+                        @Html.DisplayFor(m => m.Surname, new { @class = "form-control", @placeholder = "Registration Number" })
+                    </div>
+                    @Html.ValidationMessageFor(m => m.Surname, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+            
+
+            <tr>
+                <th>@Html.LabelFor(model => model.NID)</th>
+                <td>
+                    <div class="input-group">
+
+                        @Html.DisplayFor(m => m.NID, new { @class = "form-control", @placeholder = "Registration Number" })
+                    </div>
+                    @Html.ValidationMessageFor(m => m.NID, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+            <tr>
+                <th>@Html.LabelFor(model => model.HomeAddress)</th>
+                <td>
+                    <div class="input-group">
+
+                        @Html.DisplayFor(m => m.HomeAddress, new { @class = "form-control", @placeholder = "Registration Number" })
+                    </div>
+                    @Html.ValidationMessageFor(m => m.HomeAddress, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+            @*<tr>
+                <th>@Html.LabelFor(model => model.PremiumCost)</th>
+                <td>
+                    <div class="input-group">
+
+                        @Html.DisplayFor(m => m.PremiumCost, new { @class = "form-control", @placeholder = "Registration Number" })
+                    </div>
+                    @Html.ValidationMessageFor(m => m.PremiumCost, "", new { @class = "text-danger" })
+                </td>
+            </tr>*@
+        </table>
+    </div>
+    <div class="col-md-4">
+        @*<h3>Booking details</h3>*@
+        <br />
+        <br />
+        <br />
+        <table class="table">
+            <tr>
+                <th>@Html.LabelFor(model => model.Email)</th>
+                <td>
+                    <div class="input-group">
+
+                        @Html.DisplayFor(m => m.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Registration Number" } })
+                    </div>
+                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+
+            <tr>
+                <th>@Html.LabelFor(model => model.Gender)</th>
+                <td>
+                    <div class="input-group">
+
+                        @Html.DisplayFor(m => m.Gender, new { @class = "form-control", @placeholder = "Registration Number" })
+                    </div>
+                    @Html.ValidationMessageFor(m => m.Gender, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+            
+            <tr>
+                <th>@Html.LabelFor(model => model.Race)</th>
+                <td>
+                    <div class="input-group">
+
+                        @Html.DisplayFor(m => m.Race, new { @class = "form-control", @placeholder = "Registration Number" })
+                    </div>
+                    @Html.ValidationMessageFor(m => m.Race, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+            
+            
+            <tr>
+                <th>@Html.LabelFor(model => model.MembershipNumber)</th>
+                <td>
+                    <div class="input-group">
+
+                        @Html.DisplayFor(m => m.MembershipNumber, new { @class = "form-control", @placeholder = "Registration Number" })
+                    </div>
+                    @Html.ValidationMessageFor(m => m.MembershipNumber, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+            @*<tr>
+                    <th>@Html.LabelFor(model => model.subject)</th>
+                    <td>
+                        <a href="@Url.Action("SubjectView2", "Subject", new { id = Model.ClassNameId })" rel="tooltip" title="Register" class="btn btn-primary btn-simple btn-xs">View Subjects<i class="fa fa-registered" aria-hidden="true"></i></a>
+
+                    </td>
+                </tr>*@
+        </table>
+    </div>
+</div>
+
+
+<div class="row text-center">
+    @Html.ActionLink("Register ", "EmailMemberInfor", "MemberApplications", new { id = Model.MemberAplicationId }, new { @class = "btn btn-success" })
+</div>

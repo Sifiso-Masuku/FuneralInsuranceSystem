@@ -1,0 +1,383 @@
+﻿@model Funeral_Policy.Models.MemberType
+
+@{
+    ViewBag.Title = "Details";
+}
+<head>
+    <script src="~/Scripts/jquery-1.9.1.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+    @*<script src="~/Scripts/employee.js"></script>*@
+</head>
+<h2>Details</h2>
+
+<div>
+    <h4>MemberType</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TypeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TypeName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.payout)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.payout)
+        </dd>
+
+    </dl>
+</div>
+<div class="container">
+    <h2>Additional Members</h2>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" onclick="clearTextBox();">Add Additional Member</button>
+    <br />
+    <br />
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Surname
+                </th>
+                <th>
+                    Gender
+                </th>
+                <th>
+                    Date of Birth
+                </th>
+                
+                <th>
+                    Action
+                </th>
+            </tr>
+        </thead>
+        <tbody class="tbody">
+        </tbody>
+    </table>
+</div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                <h4 class="modal-title" id="myModalLabel">Add Additional Member</h4>
+                <input type="hidden" value="@ViewBag.MemberTypeID" id="membertypeid" />
+            </div>
+
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="familyMemberId">ID</label>
+                        <input type="text" class="form-control" id="EmployeeID" placeholder="Id" disabled="disabled" />
+                    </div>
+                    <div class="form-group">
+                        <label for="Name">Name</label>
+                        <input type="text" class="form-control" id="Name" placeholder="Name" />
+                    </div>
+                    <div class="form-group">
+                        <label for="Surname">Surname</label>
+                        <input type="text" class="form-control" id="Surname" placeholder="Surname" />
+                    </div>
+                    <div class="form-group">
+                        <label>Gender</label>
+                        <select id="Gender" class="form-control">
+                            <option selected="selected" value=" ">--Select Gender--</option>
+                            <option value="Female">Female</option>
+                            <option value="Male">Male</option>
+
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="DateOfBirth">DateOfBirth</label>
+                        <input type="text" class="form-control" id="DateOfBirth" placeholder="DateOfBirth" />
+                    </div>
+
+
+                    @*<div class="form-group">
+                        <label for="MemberType">Member Type</label>
+                        <select class="form-control" id="memberTypeId"></select>
+                    </div>*@
+                    </form>
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-primary" id="btnAdd" onclick="return Add();">Add</button>
+                <button type="button" class="btn btn-primary" id="btnUpdate" style="display:none;" onclick="Update();">Update</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    //Load Data in Table when documents is ready
+    $(document).ready(function () {
+        $("#btnAdd").click(function () {
+            var membrObj = {
+                familyMemberId: $('#familyMemberId').val(),
+                Name: $('#Name').val(),
+                Surname: $('#Surname').val(),
+                Gender: $('#Gender').val(),
+                DateOfBirth: $('#DateOfBirth').val()
+            };
+            $.ajax({
+                url: "/MemberTypes/Add",
+                data: JSON.stringify(empObj),
+                type: "POST",
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+                    loadData();
+                    $('#myModal').modal('hide');
+                },
+                error: function (errormessage) {
+                    alert(errormessage.responseText);
+                }
+            });
+        }
+        /*loadData();*/
+    });
+
+
+    //Load Data function
+    function loadData() {
+        $.ajax({
+            url: "/MemberTypes/List",
+            type: "GET",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+                var html = '';
+                $.each(result, function (key, item) {
+                    html += '<tr>
+                    ';
+                    html += '
+                        < td > ' + item.familyMemberId + '</td > ';
+                    html += '
+                        < td > ' + item.Name + '</td > ';
+                    html += '
+                        < td > ' + item.Surname + '</td > ';
+                    html += '
+                        < td > ' + item.Gender + '</td > ';
+                    html += '
+                        < td > ' + item.DateOfBirth + '</td > ';
+                    html += '
+                        < td > <a href="#" onclick="return getbyID(' + item.familyMemberId + ')">Edit</a> | <a href="#" onclick="Delele(' + item.familyMemberId + ')">Delete</a></td > ';
+                    html += '
+</tr > ';
+                });
+                $('.tbody').html(html);
+            },
+            error: function (errormessage) {
+                alert(errormessage.responseText);
+            }
+        });
+    }
+
+   //// Add Data Function
+   // function Add(data) {
+   //     var res = validate();
+   //     if (res == false) {
+   //         return false;
+   //     }
+   //     var empObj = {
+   //         familyMemberId: $('#familyMemberId').val(),
+   //         Name: $('#Name').val(),
+   //         Surname: $('#Surname').val(),
+   //         Gender: $('#Gender').val(),
+   //         DateOfBirth: $('#DateOfBirth').val()
+   //     };
+   //     $.ajax({
+   //         url: "/MemberTypes/Add",
+   //         data: JSON.stringify(empObj),
+   //         type: "POST",
+   //         contentType: "application/json;charset=utf-8",
+   //         dataType: "json",
+   //         success: function (result) {
+   //             loadData();
+   //             $('#myModal').modal('hide');
+   //         },
+   //         error: function (errormessage) {
+   //             alert(errormessage.responseText);
+   //         }
+   //     });
+   // }
+    //function Add(data) {
+    //    $.ajax({//Ajax is used for to call controller to get and post data.
+    //        type: 'POST',
+    //        url: '/MemberTypes/Add', //Call Controller
+    //        data: data,
+    //        success: function (data) {
+    //            if (data.status) {
+    //                console.log('Done')
+    //                alert('Successfully saved!');
+    //                window.location = data.url;
+    //            }
+    //            else {
+    //                console.log('Failed')
+    //                alert('Failed to Save!');
+    //            }
+    //        },
+    //        error: function () {
+    //            alert('Failed to Save!');
+    //        }
+    //    })
+    //}
+    //$('#btnAdd').click(function () {
+    //    var data = {
+    //        familyMemberId: $('#familyMemberId').val(),
+    //        Name: $('#Name').val(),
+    //        Surname: $('#Surname').val(),
+    //        Gender: $('#Gender').val(),
+    //        DateOfBirth: $('#DateOfBirth').val(),
+    //        $.get(`/MemberTypes/Add?memberid=${memberid}&membertypeid=${membertypeid}`, null, function (data) {
+    //        })
+
+    //    }
+    //    Add(data)
+    //})
+
+    //Function for getting the Data Based upon Employee ID
+    function getbyID(EmpID) {
+        $('#Name').css('border-color', 'lightgrey');
+        $('#Surname').css('border-color', 'lightgrey');
+        $('#Gender').css('border-color', 'lightgrey');
+        $('#DateOfBirth').css('border-color', 'lightgrey');
+        $.ajax({
+            url: "/FamilyMembers/getbyID/" + EmpID,
+            typr: "GET",
+            contentType: "application/json;charset=UTF-8",
+            dataType: "json",
+            success: function (result) {
+                $('#familyMemberId').val(result.familyMemberId);
+                $('#Name').val(result.Name);
+                $('#Surname').val(result.Surname);
+                $('#Gender').val(result.Gender);
+                $('#DateOfBirth').val(result.DateOfBirth);
+
+                $('#myModal').modal('show');
+                $('#btnUpdate').show();
+                $('#btnAdd').hide();
+            },
+            error: function (errormessage) {
+                alert(errormessage.responseText);
+            }
+        });
+        return false;
+    }
+
+    //function for updating employee's record
+    function Update() {
+        var res = validate();
+        if (res == false) {
+            return false;
+        }
+        var empObj = {
+            EmployeeID: $('#familyMemberId').val(),
+            Name: $('#Name').val(),
+            Surname: $('#Surname').val(),
+            Gender: $('#Gender').val(),
+            DateOfBirth: $('#DateOfBirth').val(),
+        };
+        $.ajax({
+            url: "/FamilyMembers/Update",
+            data: JSON.stringify(empObj),
+            type: "POST",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+                loadData();
+                $('#myModal').modal('hide');
+                $('#familyMemberId').val("");
+                $('#Name').val("");
+                $('#Surname').val("");
+                $('#Gender').val("");
+                $('#DateOfBirth').val("");
+            },
+            error: function (errormessage) {
+                alert(errormessage.responseText);
+            }
+        });
+    }
+
+    //function for deleting employee's record
+    function Delele(ID) {
+        var ans = confirm("Are you sure you want to delete this Record?");
+        if (ans) {
+            $.ajax({
+                url: "/FamilyMembers/Delete/" + ID,
+                type: "POST",
+                contentType: "application/json;charset=UTF-8",
+                dataType: "json",
+                success: function (result) {
+                    loadData();
+                },
+                error: function (errormessage) {
+                    alert(errormessage.responseText);
+                }
+            });
+        }
+    }
+
+    //Function for clearing the textboxes
+    function clearTextBox() {
+        $('#familyMemberId').val("");
+        $('#Name').val("");
+        $('#Surname').val("");
+        $('#Gender').val("");
+        $('#DateOfBirth').val("");
+        $('#btnUpdate').hide();
+        $('#btnAdd').show();
+        $('#Name').css('border-color', 'lightgrey');
+        $('#Surname').css('border-color', 'lightgrey');
+        $('#Gender').css('border-color', 'lightgrey');
+        $('#DateOfBirth').css('border-color', 'lightgrey');
+    }
+    //Valdidation using jquery
+    function validate() {
+        var isValid = true;
+        if ($('#Name').val().trim() == "") {
+            $('#Name').css('border-color', 'Red');
+            isValid = false;
+        }
+        else {
+            $('#Name').css('border-color', 'lightgrey');
+        }
+        if ($('#Surname').val().trim() == "") {
+            $('#Surname').css('border-color', 'Red');
+            isValid = false;
+        }
+        else {
+            $('#Surname').css('border-color', 'lightgrey');
+        }
+        if ($('#Gender').val().trim() == "") {
+            $('#Gender').css('border-color', 'Red');
+            isValid = false;
+        }
+        else {
+            $('#Gender').css('border-color', 'lightgrey');
+        }
+        if ($('#DateOfBirth').val().trim() == "") {
+            $('#DateOfBirth').css('border-color', 'Red');
+            isValid = false;
+        }
+        else {
+            $('#DateOfBirth').css('border-color', 'lightgrey');
+        }
+        return isValid;
+    }
+</script> 
+
+@*<p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.memberTypeId }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>*@

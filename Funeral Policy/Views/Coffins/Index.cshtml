@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Funeral_Policy.Models.Coffin>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<br id="coffin" />
+<br />
+<br />
+<br />
+<br />
+<h2 align="center">Coffins</h2>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.coffinName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.coffinType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.coffinPrice)
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.Image)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.coffinName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.coffinType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.coffinPrice)
+            </td>
+           
+            <td>
+                <img src="@Url.Action("RenderImage", "Coffins", new { id = item.coffinId})" width="50" height="60" />
+            </td>
+            <td>
+                <a href="@Url.Action("Details","Coffins", new { id=item.coffinId })" rel="tooltip" title="View" class="btn btn-info btn-simple btn-xs">Details<i class="fa fa-eye"></i></a>
+                <a href="@Url.Action("Edit","Coffins", new { id=item.coffinId })" rel="tooltip" title="Edit" class="btn btn-success btn-simple btn-xs">Edit<i class="fa fa-edit"></i></a>
+                <a href="@Url.Action("Delete", "Coffins", new { id = item.coffinId })" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">Delete<i class="fa fa-times"></i></a>
+            </td>
+        </tr>
+    }
+
+</table>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

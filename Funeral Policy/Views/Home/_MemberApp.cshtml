@@ -1,0 +1,114 @@
+﻿﻿@model Funeral_Policy.Models.MemberApplication
+
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+<link rel="stylesheet" href="~/Content/assets/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="~/Content/assets/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="~/Content/assets/css/form-elements.css">
+<link rel="stylesheet" href="~/Content/assets/css/style.css">
+<link href="~/Content/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<style>
+    .column {
+        float: left;
+        width: 50%;
+    }
+    .column2 {
+        float: left;
+        width: 20%;
+    }
+
+</style>
+
+
+<div class="column">
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Name)
+
+        <input type="text" name="form-first-name" placeholder="Name(s)..." class="form-first-name form-control" id="Name">
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Surname)
+
+        <input type="text" name="Surname" placeholder="Surname..." class="form-first-name form-control" id="Surname">
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.NID)
+
+        <input type="text" name="NID" placeholder="SA ID No...." class="form-first-name form-control" id="NID">
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.MonthlyEarnings)
+
+        <input type="text" name="MonthlyEarnings" placeholder="Monthly earnings..." class="form-first-name form-control" id="MonthlyEarnings">
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Email)
+
+        <input type="text" name="Email" placeholder="Email..." class="form-first-name form-control" id="Email">
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Phone)
+
+        <input type="text" name="Phone" placeholder="Cellphone No..." class="form-first-name form-control" id="Phone">
+    </div>
+
+</div>
+
+<div class="column">
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.HomeAddress)
+
+        <input type="text" name="HomeAddress" placeholder="Home address..." class="form-first-name form-control" id="HomeAddress">
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.city)
+
+        <input type="text" name="City" placeholder="City..." class="form-first-name form-control" id="City">
+    </div>
+
+    <div class="form-group">
+        <label>Province</label>
+
+        @Html.EnumDropDownListFor(model => model.Province, htmlAttributes: new { @class = "form-first-name form-control" })
+        @Html.ValidationMessageFor(model => model.Province, "", new { @class = "text-danger" })
+
+    </div>
+
+
+    <div class="form-group">
+        <label>Title</label>
+
+        @Html.EnumDropDownListFor(model => model.Tittle, htmlAttributes: new { @class = "form-first-name form-control" })
+        @Html.ValidationMessageFor(model => model.Tittle, "", new { @class = "text-danger" })
+
+    </div>
+
+    <div class="form-group">
+        <label>Gender</label>
+
+        @Html.EnumDropDownListFor(model => model.Gender, htmlAttributes: new { @class = "form-first-name form-control" })
+        @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+
+    </div>
+
+    <div class="form-group">
+        <label>Race</label>
+
+        @Html.EnumDropDownListFor(model => model.Race, htmlAttributes: new { @class = "form-first-name form-control" })
+        @Html.ValidationMessageFor(model => model.Race, "", new { @class = "text-danger" })
+
+    </div>
+</div>
+
+
+
+
+
+
+<button type="button" class="btn btn-next">Next</button>
+
+

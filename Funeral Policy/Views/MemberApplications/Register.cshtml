@@ -1,0 +1,289 @@
+﻿﻿@model Funeral_Policy.Models.MemberApplicationView
+@{ ViewBag.Title = "Register";
+                Layout = null; }
+
+@if (ViewBag.Message != null)
+{
+    <script>
+        alert('@ViewBag.Message');
+    </script>
+}
+
+<head>
+
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+    <link rel="stylesheet" href="~/Content/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/assets/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/Content/assets/css/form-elements.css">
+    <link rel="stylesheet" href="~/Content/assets/css/style.css">
+    <link href="~/Content/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+
+</head>
+
+<body>
+
+
+
+    <!-- Top content -->
+    <div class="top-content">
+        <div class="inner-bg">
+
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2 form-box">
+
+                    <form role="form" action="" method="post" class="registration-form">
+
+                        <fieldset>
+                            <div class="form-top">
+                                <div class="form-top-left">
+                                    <h3>Step 1 / 5</h3>
+                                    <p>Fill in your detais to apply:</p>
+                                </div>
+                                <div class="form-top-right">
+                                    <i class="fa fa-user"></i>
+                                </div>
+                            </div>
+
+
+                            <div class="form-bottom">
+                                <div class="form-group">
+                                    <label>Title</label>
+                                    <select name="Title" id="Title" class="form-control">
+                                        <option selected="selected" value=" ">--Select Title--</option>
+                                        <option value="Mr">Mr</option>
+                                        <option value="Mrs">Mrs</option>
+                                        <option value="Miss">Miss</option>
+                                        <option value="Dr">Dr</option>
+                                        <option value="Prof">Prof</option>
+                                        <option value="Hon">Hon</option>
+                                        <option value="Rev">Rev</option>
+                                        <option value="Ms">Ms</option>
+                                        <option value="Chief">Chief</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Name)
+
+                                    <input type="text" name="form-first-name" placeholder="Name(s)..." class="form-first-name form-control" id="Name">
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Surname)
+
+                                    <input type="text" name="Surname" placeholder="Surname..." class="form-first-name form-control" id="Surname">
+                                </div>
+                                <div class="form-group">
+                                    <label>Gender</label>
+                                    <select id="Gender" class="form-control">
+                                        <option selected="selected" value=" ">--Select Gender--</option>
+                                        <option value="Female">Female</option>
+                                        <option value="Male">Male</option>
+
+                                    </select>
+                                </div>
+
+
+                                <button type="button" class="btn btn-next">Next</button>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <div class="form-top">
+                                <div class="form-top-left">
+                                    <h3>Step 2 / 5</h3>
+
+                                </div>
+                                <div class="form-top-right">
+                                    <i class="fa fa-user"></i>
+                                </div>
+                            </div>
+
+
+                            <div class="form-bottom">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.NID)
+
+                                    <input type="text" name="NID" placeholder="SA ID No...." class="form-first-name form-control" id="NID">
+                                </div>
+
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Email)
+
+                                    <input type="text" name="Email" placeholder="Email..." class="form-first-name form-control" id="Email">
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Phone)
+
+                                    <input type="text" name="Phone" placeholder="Cellphone No..." class="form-first-name form-control" id="Phone">
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.HomeAddress)
+
+                                    <input type="text" name="HomeAddress" placeholder="Home address..." class="form-first-name form-control" id="HomeAddress">
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.city)
+
+                                    <input type="text" name="City" placeholder="City..." class="form-first-name form-control" id="City">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Province</label>
+                                    <select class="form-first-name form-control" data-val="true" data-val-required="The Province field is required." id="Province" name="Province">
+                                        <option selected="selected" value="0">--Select Province--</option>
+
+                                        <option value="Gauteng">Gauteng</option>
+                                        <option value="Western Cape">Western Cape</option>
+                                        <option value="Kwa-Zulu Natal">Kwa-Zulu Natal</option>
+                                        <option value="Northen Cape">Northen Cape</option>
+                                        <option value="Eastern Cape">Eastern Cape</option>
+                                        <option value="North West">North West</option>
+                                        <option value="Free State">Free State</option>
+                                        <option value="Limpopo">Limpopo</option>
+                                        <option value="Mpumalanga">Mpumalanga</option>
+                                    </select>
+
+                                </div>
+
+                                <button type="button" class="btn btn-previous">Previous</button>
+                                <button type="button" class="btn btn-next">Next</button>
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <div class="form-top">
+                                <div class="form-top-left">
+                                    <h3>Step 3 / 5</h3>
+                                    @*<p>Set up your account:</p>*@
+                                </div>
+                                <div class="form-top-right">
+
+                                </div>
+                            </div>
+                            <div class="form-bottom">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.MonthlyEarnings)
+
+                                    <input type="text" name="MonthlyEarnings" placeholder="Monthly earnings..." class="form-first-name form-control" id="MonthlyEarnings">
+                                </div>
+                                <div class="form-group">
+                                    <label>Race</label>
+
+                                    <select class="form-first-name form-control" data-val="true" data-val-required="The Race field is required." id="Race" name="Race">
+                                        <option selected="selected" value=" ">--Select Race--</option>
+                                        <option value="African">African</option>
+                                        <option value="White">White</option>
+                                        <option value="Coloured">Coloured</option>
+                                        <option value="Asian">Asian</option>
+                                        <option value="Indian">Indian</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+
+                                </div>
+                                <div class="form-group">
+                                    <label>Education</label>
+
+                                    <select class="form-first-name form-control" data-val="true" data-val-required="The Education field is required." id="Education" name="Education">
+                                        <option selected="selected" value=" ">--Select Education--</option>
+                                        <option value="No Matric">No Matric</option>
+                                        <option value="Matric">Matric</option>
+                                        <option value="University">University</option>
+                                        <option value="Technikon">Technikon</option>
+                                        <option value="Degree">Degree</option>
+                                        <option value="Diploma">Diploma</option>
+                                        <option value="Postgraduate">Postgraduate</option>
+                                    </select>
+
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Occupation</label>
+
+                                    <select class="form-first-name form-control" data-val="true" data-val-required="The Occupation field is required." id="Occupation" name="Occupation">
+                                        <option selected="selected" value=" ">--Select Occupation--</option>
+                                        <option value="Manager">Manager</option>
+                                        <option value="Professional">Professional</option>
+                                        <option value="Technician">Technician</option>
+                                        <option value="Clerk">Clerk</option>
+                                        <option value="Sales and Services">SalesandServices</option>
+                                        <option value="Skilled Agriculture">SkilledAgriculture</option>
+                                        <option value="Craft And Related Trade">CraftAndRelatedTrade</option>
+                                        <option value="Plant And Machine Operator">PlantAndMachineOperator</option>
+                                        <option value="Elementary">Elementary</option>
+                                        <option value="ArmedForces">ArmedForces</option>
+                                        <option value="Pensioner">Pensioner</option>
+                                        <option value="Unemployed">Unemployed</option>
+                                    </select>
+
+                                </div>
+                                <button type="button" class="btn btn-previous">Previous</button>
+                                <button type="button" id="btnSaveApplication" class="btn">Submit Application!</button>
+                            </div>
+                        </fieldset>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Javascript -->
+    <script src="~/Content/assets/js/jquery-1.11.1.min.js"></script>
+    <script src="~/Content/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/Content/assets/js/jquery.backstretch.min.js"></script>
+
+    <script src="~/Content/assets/js/retina-1.1.0.min.js"></script>
+    <script src="~/Content/assets/js/scripts.js"></script>
+</body>
+
+<script>
+    function SaveApplication(data) {
+        $.ajax({//Ajax is used for to call controller to get and post data.
+            type: 'POST',
+            url: '/MemberApplications/SaveApplication', //Call Controller
+            data: data,
+            success: function (data) {
+                if (data.status) {
+                    console.log('Done')
+                    alert('Successfully saved!');
+                    window.location = data.url;
+                }
+                else {
+                    console.log('Failed')
+                    alert('Failed to Save!');
+                }
+            },
+            error: function () {
+                alert('Failed to Save!');
+            }
+        })
+    }
+
+    $('#btnSaveApplication').click(function () {
+        var data = {
+            Tittle: $('#Title').val(),
+            Name: $('#Name').val(),
+            Surname: $('#Surname').val(),
+            Gender: $('#Gender').val(),
+            NID: $('#NID').val(),
+            Race: $('#Race').val(),
+            Email: $('#Email').val(),
+            Phone: $('#Phone').val(),
+            HomeAddress: $('#HomeAddress').val(),
+            City: $('#City').val(),
+            Province: $('#Province').val(),
+            MonthlyEarnings: $('#MonthlyEarnings').val(),
+            Occupation: $('#Occupation').val(),
+            Education: $('#Education').val()
+
+
+        }
+        SaveApplication(data)
+    })
+
+</script>

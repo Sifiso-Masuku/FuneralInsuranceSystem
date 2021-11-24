@@ -1,0 +1,48 @@
+﻿@model Funeral_Policy.Models.FuneralType
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>FuneralType</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.funeralTypeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.funeralTypeName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.funeralCost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.funeralCost)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.description)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

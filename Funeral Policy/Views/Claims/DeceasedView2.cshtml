@@ -1,0 +1,111 @@
+﻿@model IEnumerable<Funeral_Policy.Models.Claim>
+
+@{
+    ViewBag.Title = "DeceasedView";
+}
+<head>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        form {
+            display: inline-grid;
+        }
+
+        .webgrid-table {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            font-size: 1.2em;
+            width: 100%;
+            display: table;
+            border-collapse: separate;
+            border: solid 1px #98BF21;
+            background-color: white;
+        }
+
+            .webgrid-table td, th {
+                border: 1px solid #98BF21;
+                padding: 3px 7px 2px;
+            }
+    </style>
+
+
+</head>
+<body>
+    <center>
+
+        <div style="background-color:whitesmoke; height:37px;width:85% ;font-size:15px;">
+            <h2>Deceased Details</h2>
+        </div>
+        <div class="card shadow mb-4" style="background-color:aliceblue;height:max-content; width:max-content;font-size:13px;vertical-align:auto; top:auto">
+            <div class="card-header ">
+
+                <table class="table">
+                    <tr>
+                        <th>Deceased Id</th>
+                        <th>Death Certificate</th>
+                    </tr>
+                    <div class="row">
+                        @foreach (var item in Model)
+                        {
+
+                            <div class="col-md-4">
+                                <div class="card " style="width: 18rem;color: dodgerblue; background-color:lightblue ">
+
+                                    <div class="card-body">
+
+                                        <h6 class="card-title">
+                                            <p><span><i class="fas fa-gas-pump"></i></span> Tittle: @Html.DisplayFor(modelItem => item.Tittle)</p>
+                                            <p><span><i class="fas fa-gas-pump"></i></span> Name: @Html.DisplayFor(modelItem => item.DeceasedName)</p>
+                                            @*@Html.DisplayFor(modelItem => item.funeralTypeName)*@
+
+                                            @*@Html.DisplayFor(modelItem => item.description)*@
+                                            <p><span><i class="fas fa-gas-pump"></i></span> Surname: @Html.DisplayFor(modelItem => item.DeceasedSurname)</p>
+                                            <p><span><i class="fas fa-gas-pump"></i></span> Passport/ID No: @Html.DisplayFor(modelItem => item.DeceasedNID)</p>
+                                            <p><span><i class="fas fa-gas-pump"></i></span> Death Certificate No: @Html.DisplayFor(modelItem => item.DeathCertificateNo)</p>
+                                            <p><span><i class="fas fa-gas-pump"></i></span> Death Cause: @Html.DisplayFor(modelItem => item.DeathCause)</p>
+
+
+
+                                        </h6>
+
+                                        <td>
+                                            <div class="btn-group">
+                                                <a class="btn btn-primary" href="@Url.Action("OpenPDFProofOfAddressDoc", "Claims", new { id=item.claimId },null)">
+                                                    <span class="icon_lightbulb_alt"></span>
+                                                    View Pdf
+                                                </a>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <a class="btn btn-primary" href="@Url.Action("OpenPDFPaySlipDoc", "Claims", new { id=item.claimId },null)">
+                                                    <span class="icon_lightbulb_alt"></span>
+                                                    View Pdf
+                                                </a>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            @*<p><a class="btn btn-default" onclick="location.href='@Url.Action("Index","Claims", new { id=item.MemberAplicationId})'">Go To Aditional members </a></p>*@
+                                            <a href="@Url.Action("Index", "Claims", new { id = item.claimId })" rel="tooltip" title="Back" class="btn btn-success btn-simple btn-xs">Back</a>
+                                        </td>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+
+                </table>
+            </div>
+
+
+
+
+        </div>
+    </center>
+</body>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+

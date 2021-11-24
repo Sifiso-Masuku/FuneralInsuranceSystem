@@ -1,0 +1,26 @@
+﻿@model Funeral_Policy.Models.FuneralCoverPayout
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>FuneralCoverPayout</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PayoutAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PayoutAmount)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.funeralCoverPayoutId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

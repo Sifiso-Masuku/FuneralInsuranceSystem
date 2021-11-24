@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Funeral_Policy.Models.FuneralType>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Funeral Types</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.funeralTypeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.funeralCost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.description)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.funeralTypeName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.funeralCost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.description)
+        </td>
+        <td>
+            <a href="@Url.Action("Details","FuneralTypes", new { id=item.funeralTypeId})" rel="tooltip" title="View" class="btn btn-info btn-simple btn-xs">Details<i class="fa fa-eye"></i></a>
+            <a href="@Url.Action("Edit","FuneralTypes", new { id=item.funeralTypeId })" rel="tooltip" title="Edit" class="btn btn-success btn-simple btn-xs">Edit<i class="fa fa-edit"></i></a>
+            <a href="@Url.Action("Delete", "FuneralTypes", new { id = item.funeralTypeId })" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">Delete<i class="fa fa-times"></i></a>
+            @*@Html.ActionLink("Edit", "Edit", new { id=item.funeralTypeId }) |
+        @Html.ActionLink("Details", "Details", new { id=item.funeralTypeId }) |
+        @Html.ActionLink("Delete", "Delete", new { id=item.funeralTypeId })*@
+        </td>
+    </tr>
+}
+
+</table>

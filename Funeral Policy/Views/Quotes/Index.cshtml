@@ -1,0 +1,91 @@
+﻿@model IEnumerable<Funeral_Policy.Models.Quote>
+@{ ViewBag.Title = "Index"; }
+@*<style>
+    body {
+        text-align: center;
+    }
+    form {
+        display: inline-block;
+    }*@
+    <!--</style>-->
+<html>
+<!--<head>-->
+    @*<style>
+        .webgrid-table {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            font-size:50px;
+            width: 100%;
+            display: table;
+            border-collapse: separate;
+            border: solid 1px #98BF21;
+            background-color: white;
+        }
+
+            .webgrid-table td, th {
+                border: 1px solid #98BF21;
+                padding: 3px 7px 2px;
+            }
+    </style>*@
+    <!--</head>-->
+    <body>
+        <center>
+            @*<div style="background-color:whitesmoke; height:37px;width:85% ;font-size:15px;">*@
+                <h2>You qualify for Heavenly Sent Funeral Cover.</h2>
+                <hr />
+                <br />
+                @*<div class="card shadow mb-4" style="background-color:aliceblue; width:85%;font-size:12px; top:auto">*@
+                    <div class="card-header ">
+
+                        <div class="row">
+                            @foreach (var item in Model)
+                            {
+                <div class="col-md-3">
+                    <div class="container">
+
+
+                        <p class="card-text">
+                            <b> Name :</b>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </p>
+                        <p class="card-text">
+                            <b>Surname :</b>
+                            @Html.DisplayFor(modelItem => item.Surname)
+                        </p>
+                        <p class="card-text">
+                            <b>Gender :</b>
+                            @Html.DisplayFor(modelItem => item.Gender)
+                        </p>
+
+                        <p class="card-text">
+                            <b>Funeral Plan :</b>
+                            @Html.DisplayFor(modelItem => item.PlanName)
+                        </p>
+                        <p class="card-text">
+                            <b>Payout amount:</b>
+                            @Html.DisplayFor(modelItem => item.Funeralpayout)
+                        </p>
+                        <p class="card-text">
+                            <b>Description:</b>
+                            @Html.DisplayFor(modelItem => item.PlanDescription)
+                        </p>
+                        <p class="card-text">
+                            <b>Monthly Premium:</b>
+                            @Html.DisplayFor(modelItem => item.PremiumCost)
+                        </p>
+                        
+
+                    <a href='@Url.Action("QuoteAccept", "Quotes", new { id = item.quoteId, holder = ViewBag.Holder }, null)' class="btn btn-success">Accept quote</a>
+                        
+                                    </div>
+                </div>}
+                        </div>
+
+                        <br />
+
+                    </div>
+                @*</div>
+                </div>*@
+                </center>
+
+</body>
+</html>

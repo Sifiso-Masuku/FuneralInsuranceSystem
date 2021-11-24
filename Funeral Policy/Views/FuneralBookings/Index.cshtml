@@ -1,0 +1,151 @@
+﻿
+@model IEnumerable<Funeral_Policy.Models.FuneralBooking>
+
+@{
+    ViewBag.Title = "Index";
+}
+<title>font awesome file invoice icon</title>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+
+@*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+<html>
+<head>
+
+    <style>
+        .webgrid-table {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            font-size: 1.2em;
+            width: 100%;
+            display: table;
+            border-collapse: separate;
+            border: solid 1px #98BF21;
+            background-color: white;
+        }
+
+            .webgrid-table td, th {
+                border: 1px solid #98BF21;
+                padding: 3px 7px 2px;
+            }
+    </style>
+
+</head>
+<body>
+    <center>
+
+        <div style="background-color:whitesmoke; height:37px;width:85% ;font-size:15px;">
+            <h2>My Funeral</h2>
+        </div>
+        <div class="card shadow mb-4" style="background-color:aliceblue;height:max-content; width:max-content;font-size:13px; top:auto">
+            <div class="card-header ">
+
+                <table class="table">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FuneralType.funeralTypeName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FuneralDate)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Time)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DateCreated)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.address)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.CoffinName)
+                        </th>
+                        @*<th>
+                            @Html.DisplayNameFor(model => model.CoffinPrice)
+                        </th>*@
+                        <th>
+                            @Html.DisplayNameFor(model => model.Status)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.TotalCost)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Action)
+                        </th>
+
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FuneralType.funeralTypeName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FuneralDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Time)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DateCreated)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.address)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CoffinName)
+                            </td>
+                            @*<td>
+                                @Html.DisplayFor(modelItem => item.CoffinPrice)
+                            </td>*@
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Status)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TotalCost)
+                            </td>
+
+                            @*<td>*@
+                            <td>
+                                @*<div class="btn-group">
+                                    <a class="btn btn-danger" href="@Url.Action("PrintInvoice", "Orders", new { id = item.funeralBookingId,st=item.Status }, null)">
+                                        <span class="icon_lightbulb_alt"></span>
+                                        Invoice
+                                    </a>
+                                </div>*@
+                                <a href="@Url.Action("PrintInvoice", "FuneralBookings", new { id = item.funeralBookingId,st=item.Status  })" onclick="return confirm('Are you sure you want to print Invoice, click Ok to Confirm, Or Cancel');" rel="tooltip" title="Print Invoice" class="btn btn-success btn-simple btn-simple"><i class="fas fa-file-invoice fa-500px fa-spin" aria-hidden="true"></i></a>
+                            </td>
+                            @if (item.Status == "Approved")
+                            {
+                                if (User.IsInRole("Member"))
+                                {
+                                    @*<td>
+                                        <div class="btn-group">
+                                            <a class="btn btn-success" href="@Url.Action("OnceOff", "Payment", new { payment = item.TotalCost, id=item.funeralBookingId }, null)">
+                                                <span class="icon_lightbulb_alt"></span>
+                                                Pay
+                                            </a>
+                                        </div>
+                                    </td>*@
+                        <td>
+                            <a href="@Url.Action("OnceOff", "Payment", new { payment = item.TotalCost, id = item.funeralBookingId })" onclick="return confirm('Are you sure you want to pay?, click Ok to Confirm, Or Cancel');" rel="tooltip" title="Pay" class="btn btn-primary btn-simple btn-xs"><i style="font-size:24px" class="fab fa-paypal">&#xf1ed;</i></a>
+                        </td>
+
+                                }
+
+                            }
+                        </tr>
+                    }
+
+                </table>
+            </div>
+        </div>
+
+    </center>
+
+    
+
+</body>
+</html>

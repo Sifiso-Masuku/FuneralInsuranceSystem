@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Funeral_Policy.Models.FuneralType>
+@{
+    ViewBag.Title = "FuneralTpeView";
+    //Layout = null;
+}
+<style>
+    body {
+        text-align: center;
+    }
+
+    form {
+        display: inline-grid;
+    }
+</style>
+
+
+<h2 class="top-head">Funeral Burial Packages</h2>
+
+<hr />
+<div class="row">
+
+    @foreach (var item in Model)
+    {
+
+        <div class="col-md-4">
+            <div class="card " style="width: 18rem;color: dodgerblue; background-color:lightblue ">
+
+                <div class="card-body">
+
+                    <h6 class="card-title">
+                        <p><span><i class="fas fa-gas-pump"></i></span> Funeral Name: @Html.DisplayFor(modelItem => item.funeralTypeName)</p>
+                        @*@Html.DisplayFor(modelItem => item.funeralTypeName)*@
+                        <br />
+                        @*@Html.DisplayFor(modelItem => item.description)*@
+                        <p><span><i class="fas fa-gas-pump"></i></span> Description: @Html.DisplayFor(modelItem => item.description)</p>
+
+                    </h6>
+                    <h4><strong> </strong>@Html.DisplayFor(modelItem => item.funeralCost)</h4>
+
+                </div>
+            </div>
+        </div>
+    }
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+
+
+

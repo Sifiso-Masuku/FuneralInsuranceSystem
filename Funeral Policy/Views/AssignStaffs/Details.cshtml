@@ -1,0 +1,58 @@
+﻿@model Funeral_Policy.Models.AssignStaff
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>AssignStaff</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Staff.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Staff.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.funeralBookingId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.funeralBookingId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Member)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Member)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Coffin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Coffin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FuneralType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FuneralType)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.AssignId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

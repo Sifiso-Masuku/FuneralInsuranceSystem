@@ -1,0 +1,42 @@
+﻿@model Funeral_Policy.Models.FuneralPlan
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>FuneralPlan</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FuneralCoverPayout.funeralCoverPayoutId)
+        </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.FuneralCoverPayout.funeralCoverPayoutId)
+        </dt>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FuneralPlanName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FuneralPlanName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FuneralPlanDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FuneralPlanDescription)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.FuneralPlanId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

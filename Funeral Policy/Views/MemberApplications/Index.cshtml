@@ -1,0 +1,249 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+﻿@model IPagedList<Funeral_Policy.Models.MemberApplication>
+
+
+@{ ViewBag.Title = "Index";
+    var message = TempData["AlertMessage"] ?? string.Empty;
+}
+
+<script>
+                var msg = '@message';
+                if (msg)
+                    alert(msg)
+</script>
+<title>font awesome file invoice icon</title>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<html>
+
+<head>
+
+    <style>
+        .webgrid-table {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            font-size: 1.2em;
+            width: 100%;
+            display: table;
+            border-collapse: separate;
+            border: solid 1px #98BF21;
+            background-color: white;
+        }
+
+            .webgrid-table td, th {
+                border: 1px solid #98BF21;
+                padding: 3px 7px 2px;
+            }
+    </style>
+</head>
+<body>
+    <center>
+
+        <div style="background-color:whitesmoke; height:37px;width:100% ;font-size:15px;">
+
+            <h2> Member Application List </h2>
+
+        </div>
+
+        <div class="card shadow mb-4" style="background-color:aliceblue;height:max-content; width:max-content;font-size:13px;overflow:hidden; top:auto ">
+            <div class="card-header ">
+                <p>
+                    <div class="btn-group">
+                        <a class="btn btn-send" href="@Url.Action("Index", "Home")">
+                            <i class="fad fa fa-home"></i>
+                            Home
+                        </a>
+                    </div>
+                    <div class="btn-group">
+                        <a class="btn btn-success" href="@Url.Action("Register", "MemberApplications")">
+                            <i class="fad fa-file-alt"></i>
+                            Register Member
+                        </a>
+                    </div>
+
+                    <div>
+                        @using (Html.BeginForm("Index", "MemberApplications", FormMethod.Get))
+                        {
+                            //the following are search options
+                            <br />
+                            <b> Search Option: </b>@Html.RadioButton("option", "MembershipNumber") <text>Member No</text> @Html.RadioButton("option", "Status") <text> Status </text>
+
+                            @Html.RadioButton("option", "NID")<text>NID</text> @Html.TextBox("search")
+                            <input type="submit" name="submit" value="Search" />}
+                    </div>
+                </p>
+
+
+                @*@if (Model.Count() == 0)
+                                {
+                    <tr>
+                        <td colspan="3"> Records not found </td>
+                    </tr> }
+                                else
+                                {*@
+
+                <table class="table">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.First().MembershipNumber)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.First().Tittle)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.First().Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.First().Surname)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.First().Gender)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.First().NID)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.First().Race)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.First().Email)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.First().Status)
+
+                        </th>
+
+                        @*<th>
+                                @Html.DisplayNameFor(model => model.funeralPlans)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.PremiumCost)
+                            </th>*@
+                        <th>
+                            @Html.DisplayNameFor(model => model.First().Occupation)
+                        </th>
+                        <th>Choosen Plan</th>
+                        <th>Id Document</th>
+                        <th>Bank Statement</th>
+                        <th>Pay Slip</th>
+                        <th>Proof Of Address</th>
+                        <th>Action</th>
+
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.MembershipNumber)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Tittle)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Surname)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Gender)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NID)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Race)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Email)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Status)
+                            </td>
+
+                            @*<td>
+                                    @Html.DisplayFor(modelItem => item.funeralPlans)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PremiumCost)
+                                </td>*@
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Occupation)
+                            </td>
+                            <td>
+
+                                <a href="@Url.Action("PlanView2", "Quotes", new { id = item.MemberAplicationId })" rel="tooltip" title="Click To View" class="btn btn-primary btn-simple btn-xs">View Chosen Plan<i class="fa fa-registered" aria-hidden="true"></i></a>
+
+                            </td>
+                            <td>
+
+                                <div class="btn-group">
+                                    <a class="btn btn-primary" href="@Url.Action("OpenPDFIDDoc", "MemberApplications", new { id = item.MemberAplicationId }, null)">
+                                        <span class="icon_lightbulb_alt"></span>
+                                        View Pdf
+                                    </a>
+                                </div>
+                            </td>
+
+                            <td>
+                                <div class="btn-group">
+                                    <a class="btn btn-primary" href="@Url.Action("OpenPDFBankStatementDoc", "MemberApplications", new { id = item.MemberAplicationId }, null)">
+                                        <span class="icon_lightbulb_alt"></span>
+                                        View Pdf
+                                    </a>
+                                </div>
+                            </td>
+
+                            <td>
+                                <div class="btn-group">
+                                    <a class="btn btn-primary" href="@Url.Action("OpenPDFPaySlipDoc", "MemberApplications", new { id = item.MemberAplicationId }, null)">
+                                        <span class="icon_lightbulb_alt"></span>
+                                        View Pdf
+                                    </a>
+                                </div>
+                            </td>
+
+
+                            <td>
+                                <div class="btn-group">
+                                    <a class="btn btn-primary" href="@Url.Action("OpenPDFProofOfAddressDoc", "MemberApplications", new { id = item.MemberAplicationId }, null)">
+                                        <span class="icon_lightbulb_alt"></span>
+                                        View Pdf
+                                    </a>
+                                </div>
+                            </td>
+
+                            <td>
+                                @if (item.Status != "Approved")
+                                {
+                                    <a href="@Url.Action("ApproveApplication", "Memberapplications", new { id = item.MemberAplicationId })" onclick="return confirm('Are you sure you want to Approve, click Ok to Confirm, Or Cancel');" rel="tooltip" title="Approve" class="btn btn-success btn-simple btn-xs"><i class="fa fa-check" aria-hidden="true"></i></a>}
+                                <a href="@Url.Action("RejectApplication", "Memberapplications", new { id = item.MemberAplicationId })" onclick="return confirm('Are you sure you want to Reject, click Ok to Confirm, Or Cancel');" rel="tooltip" title="Reject" class="btn btn-danger btn-simple btn-xs"><i class="fa fa-ban" aria-hidden="true"></i></a>
+                                @if (item.Status == "Registered")
+                                {<a href="@Url.Action("ApproveClaim", "Memberapplications", new { id = item.MemberAplicationId })" onclick="return confirm('Are you sure you want to Claim, click Ok to Confirm, Or Cancel');" rel="tooltip" title="Approve Claim" class="btn btn-success btn-simple btn-xs"><i class="fas fa-check-double" aria-hidden="true"></i></a>}
+
+                            </td>
+
+
+
+
+
+                        </tr>
+}
+                </table>
+            </div>
+        </div>
+    </center>
+
+</body>
+</html>
+
+@Html.PagedListPager(Model, pageNumber => Url.Action("Index", new
+{
+    pageNumber,
+    option = Request.QueryString["option"],
+    search = Request.QueryString["search"]
+}))

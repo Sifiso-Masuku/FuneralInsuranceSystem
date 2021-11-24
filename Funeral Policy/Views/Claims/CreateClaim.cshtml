@@ -1,0 +1,314 @@
+﻿@model Funeral_Policy.Models.ClaimViewcs
+
+@{
+    ViewBag.Title = "CreateClaim";
+    Layout = null;
+}
+
+
+
+<head>
+
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+    <link rel="stylesheet" href="~/Content/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/assets/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/Content/assets/css/form-elements.css">
+    <link rel="stylesheet" href="~/Content/assets/css/style.css">
+    <link href="~/Content/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+
+</head>
+
+<body>
+
+
+
+    
+    <!-- Top content -->
+    <div class="top-content">
+        <div class="inner-bg">
+
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2 form-box">
+
+                    <form role="form" action="" method="post" class="registration-form">
+
+                        <fieldset>
+                            <div class="form-top">
+                                <div class="form-top-left">
+                                    <h3>Step 1 / 4</h3>
+                                    <p>A. Details of claimant:</p>
+                                </div>
+                                <div class="form-top-right">
+                                    <i class="fa fa-user"></i>
+                                </div>
+                            </div>
+                            
+
+                            <div class="form-bottom">
+                                <div class="form-group">
+                                    <label>Title</label>
+                                    <select name="Title" id="Title" class="form-control">
+                                        <option selected="selected" value=" ">--Select Title--</option>
+                                        <option value="Mr">Mr</option>
+                                        <option value="Mrs">Mrs</option>
+                                        <option value="Miss">Miss</option>
+                                        <option value="Dr">Dr</option>
+                                        <option value="Prof">Prof</option>
+                                        <option value="Hon">Hon</option>
+                                        <option value="Rev">Rev</option>
+                                        <option value="Ms">Ms</option>
+                                        <option value="Chief">Chief</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.MembershipNumber)
+
+                                    <input type="text" name="form-first-name" placeholder="Membership Number..." class="form-first-name form-control" id="MembershipNumber">
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Name)
+
+                                    <input type="text" name="form-first-name" placeholder="Name(s)..." class="form-first-name form-control" id="Name">
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Surname)
+
+                                    <input type="text" name="Surname" placeholder="Surname..." class="form-first-name form-control" id="Surname">
+                                </div>
+                                
+
+
+                                <button type="button" class="btn btn-next">Next</button>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <div class="form-top">
+                                <div class="form-top-left">
+                                    <h3>Step 1 / 4</h3>
+                                    <p>A. Details of claimant:</p>
+
+                                </div>
+                                <div class="form-top-right">
+                                    <i class="fa fa-user"></i>
+                                </div>
+                            </div>
+
+
+                            <div class="form-bottom">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.NID)
+
+                                    <input type="text" name="NID" placeholder="SA ID No...." class="form-first-name form-control" id="NID">
+                                </div>
+
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Email)
+
+                                    <input type="text" name="Email" placeholder="Email..." class="form-first-name form-control" id="Email">
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Phone)
+
+                                    <input type="text" name="Phone" placeholder="Cellphone No..." class="form-first-name form-control" id="Phone">
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.ClaimantAddress)
+
+                                    <input type="text" name="ClaimantAddress" placeholder="Claimant Address..." class="form-first-name form-control" id="ClaimantAddress">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Relationship</label>
+
+                                    <select class="form-first-name form-control" data-val="true" data-val-required="The Relationship field is required." id="Relationship" name="Relationship">
+                                        <option selected="selected" value=" ">--Select Relationship--</option>
+                                        <option value="Husband"> Husband</option>
+                                        <option value="  Wife">  Wife</option>
+                                        <option value="Son">Son</option>
+                                        <option value="Daughter">Daughter</option>
+                                        <option value="  Grandparent">  Grandparent</option>
+                                        <option value="  Cousin">  Cousin</option>
+                                        <option value="  Sister">  Sister</option>
+                                        <option value="   Brother">   Brother</option>
+                                        <option value="  Friend">  Friend</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+
+                                </div>
+
+                               
+
+                                <button type="button" class="btn btn-previous">Previous</button>
+                                <button type="button" class="btn btn-next">Next</button>
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <div class="form-top">
+                                <div class="form-top-left">
+                                    <h3>Step 2 / 4</h3>
+                                    @*<p>Set up your account:</p>*@
+                                <p>B. Details of Deceased:</p> 
+                                </div>
+                                <div class="form-top-right">
+
+                                </div>
+                            </div>
+                            <div class="form-bottom">
+
+                                <div class="form-group">
+                                    <label>Title</label>
+                                    <select name="Title" id="DeceasedTittle" class="form-control">
+                                        <option selected="selected" value=" ">--Select Title--</option>
+                                        <option value="Mr">Mr</option>
+                                        <option value="Mrs">Mrs</option>
+                                        <option value="Miss">Miss</option>
+                                        <option value="Dr">Dr</option>
+                                        <option value="Prof">Prof</option>
+                                        <option value="Hon">Hon</option>
+                                        <option value="Rev">Rev</option>
+                                        <option value="Ms">Ms</option>
+                                        <option value="Chief">Chief</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.DeceasedName)
+
+                                    <input type="text" name="DeceasedName" placeholder="Deceased Name...." class="form-first-name form-control" id="DeceasedName">
+                                </div>
+
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.DeceasedSurname)
+
+                                    <input type="text" name="DeceasedSurname" placeholder="Deceased Surname..." class="form-first-name form-control" id="DeceasedSurname">
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.DeceasedNID)
+
+                                    <input type="text" name="DeceasedNID" placeholder="Deceased NID..." class="form-first-name form-control" id="DeceasedNID">
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.DeceasedAddress)
+
+                                    <input type="text" name="DeceasedAddress" placeholder="Deceased Address" class="form-first-name form-control" id="DeceasedAddress">
+                                </div>
+
+                                @*<div class="form-group">
+                                    @Html.LabelFor(model => model.DeathDate )
+
+                                    <input type="text" name="DeathDate" placeholder="Death of Death..." class="form-first-name form-control" id="DeathDate" accept=".DateTime"> 
+                                </div>*@
+                                <div class="form-group">
+                                    <label>Death Cause</label>
+                                    <select class="form-first-name form-control" data-val="true" data-val-required="The Cause of death field is required." id="DeathCause" name="DeathCause">
+                                        <option selected="selected" value="0">--Select cause of Death--</option>
+
+                                        <option value="Natural">Natural</option>
+                                        <option value="Accident">Accident</option>
+                                        <option value="Suicide">Suicide</option>
+
+                                    </select>
+
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.DeathCertificateNo)
+
+                                    <input type="text" name="DeathCertificateNo" placeholder="Death Certificate Number..." class="form-first-name form-control" id="DeathCertificateNo">
+                                </div>
+
+                               
+                                
+                                <button type="button" class="btn btn-previous">Previous</button>
+                                <button type="button" id="btnSaveApplication" class="btn">Submit Application!</button>
+                            </div>
+                        </fieldset>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Javascript -->
+    <script src="~/Content/assets/js/jquery-1.11.1.min.js"></script>
+    <script src="~/Content/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/Content/assets/js/jquery.backstretch.min.js"></script>
+
+    <script src="~/Content/assets/js/retina-1.1.0.min.js"></script>
+    <script src="~/Content/assets/js/scripts.js"></script>
+</body>
+
+<script>function SaveApplication(data) {
+        $.ajax({//Ajax is used for to call controller to get and post data.
+            type: 'POST',
+            url: '/Claims/SaveApplication', //Call Controller
+            data: data,
+            success: function (data) {
+                if (data.status) {
+                    console.log('Done')
+                    alert('Successfully saved!');
+                    window.location = data.url;
+                }
+                else {
+                    console.log('Failed')
+                    alert('Failed to Save!');
+                }
+            },
+            error: function () {
+                alert('Failed to Save!');
+            }
+        })
+    }
+
+    $('#btnSaveApplication').click(function () {
+        var data = {
+            MembershipNumber: $('#MembershipNumber').val(),
+            Tittle: $('#Title').val(),
+            Name: $('#Name').val(),
+            Surname: $('#Surname').val(),
+           
+            NID: $('#NID').val(),
+            ClaimantAddress: $('#ClaimantAddress').val(),
+            Email: $('#Email').val(),
+            Phone: $('#Phone').val(),
+            Relationship: $('#Relationship').val(),
+            DeceasedTittle: $('#DeceasedTittle').val(),
+            DeceasedName: $('#DeceasedName').val(),
+            DeceasedSurname: $('#DeceasedSurname').val(),
+            DeceasedNID: $('#DeceasedNID').val(),
+            DeceasedAddress: $('#DeceasedAddress').val(),
+           /* DeathDate: $('#DeathDate').val(),*/
+            DeathCause: $('#DeathCause').val(),
+              DeathCertificateNo: $('#DeathCertificateNo').val()
+
+
+        }
+        SaveApplication(data)
+    })</script>
+<script>
+    $(document).ready(function () {
+        $('.date').datepicker({ dateFormat: 'dd/mm/yy' });
+    });
+    $.validator.addMethod('date', function (value, element) {
+        if (this.optional(element)) {
+            return true;
+        }
+        var valid = true;
+        try {
+            $.datepicker.parseDate('dd/MM/yy', value);
+        }
+        catch (err) {
+            err.description;
+            valid = false;
+        }
+        return valid;
+    });
+</script>

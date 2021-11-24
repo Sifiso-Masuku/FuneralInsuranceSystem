@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Funeral_Policy.Models.FuneralPlan>
+@{
+    ViewBag.Title = "FuneralPlanView";
+}
+<style>
+        body {
+            text-align: center;
+        }
+
+        form {
+            display: inline-grid;
+        }
+    </style>
+
+<h2 class="center">OFFERING THE BEST COVER FOR: </h2>
+<hr />
+<p>
+    We are not always prepared for ones passing, in this case Heavenly Sent Funerals can provide a fully comprehensive package to you and your family, making the burial process just a little bit easier.
+
+    Choose from a range of financial products of burial packages:
+</p>
+
+<div class="row">
+
+    @foreach (var item in Model)
+    {
+      
+        <div class="col-md-4">
+            <div class="card " style="width: 18rem; color: dodgerblue; background-color:bisque">
+
+                <div class="card-body">
+                    <div class="form-top-left">
+                        <i class="fa fa-users"></i>
+                    </div>
+                    <h4 class="card-title">
+
+                        <strong> @Html.DisplayFor(modelItem => item.FuneralPlanName)</strong>
+                        <br />
+                    </h4>
+                    @Html.DisplayFor(modelItem => item.FuneralPlanDescription)
+                    <br />
+                    <strong>
+                        @Html.DisplayFor(modelItem => item.FuneralCoverPayout.PayoutAmount)
+                    </strong>
+
+
+                   
+
+                </div>
+            </div>
+        </div>
+    }
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+
+
+
+
+
